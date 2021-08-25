@@ -13,9 +13,10 @@ class SeHua(scrapy.Spider):
         for item in table_list:
 
             author = item.css("td.by a::text").get()
-            if 'linzjian' == author:
+            if '黑色晨曦' == author:
                 sehua_item = SehuaItem()
                 sehua_item['author'] = author
+                sehua_item['title'] = item.css('tr a.s.xst::text').get()
                 sehua_item['url'] = response.urljoin(item.css('tr a[class*=xst]::attr(href)').get())
                 yield sehua_item
         next_page = response.css("span#fd_page_bottom div.pg a.nxt::attr(href)").get()

@@ -9,3 +9,4 @@ import scrapy
 class SehuaItem(scrapy.Item):
     author = scrapy.Field()
     url = scrapy.Field()
+    title = scrapy.Field()

@@ -19,9 +19,9 @@ class SehuaPipeline:
 
     def process_item(self, item, spider):
         try:
-            logging.info("author: %s, url: %s", item['author'], item['url'])
-            self.cursor.execute(r"insert into sehua(title, [url], created_at) values(?, ?, ?)", item['author'],
-                                item['url'], datetime.datetime.now())
+            # logging.info("author: %s, title: %s url: %s", item['author'], item['title'], item['url'])
+            self.cursor.execute(r"insert into sehua(author, title, [url], created_at) values(?, ?, ?, ?)", item['author'],
+                                item['title'],item['url'], datetime.datetime.now())
             self.cursor.commit()
         except Exception as e:
             print(e)
